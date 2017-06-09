@@ -1,0 +1,49 @@
+<!doctype html>
+    <head>
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+$('input[name^=fruits]:eq(0)').change( function(){
+
+    if ($(this).is(':checked')) {
+        $('input[name^=fruits]:not(:eq(0))').prop('checked', false);
+        //０以外チェックされたら
+$('input[name^=fruits]:not(:eq(0),:eq(1))').attr('disabled', 'disabled');
+
+        //チェックできないようにする
+}else{
+    $("input[name^=fruits]").removeAttr("disabled");
+    //それ以外の動作はチェックできないようにするのを解除
+}
+});
+
+$("input[name^=fruits]:eq(1)").change(function(){
+if ($(this).is(":checked")){
+        $('input[name^=fruits]:not(:eq(1))').prop('checked', false);
+                //１以外チェックされたら
+        $('input[name^=fruits]:not(:eq(1),:eq(0))').attr('disabled', 'disabled');
+                //チェックできないようにする
+}else{
+    $("input[name^=fruits]").removeAttr("disabled");
+        //それ以外の動作はチェックできないようにするのを解除
+}
+});
+
+});
+
+    
+        </script>
+    </head>
+    <body>
+        <form name="hoge">
+            <label><input type="checkbox" name="fruits[]" value="4種盛り合わせ"><span>4種盛り合わせ</span></label>
+            <label><input type="checkbox" name="fruits[]" value="3種盛り合わせ">3種盛り合わせ</label>
+            <label><input type="checkbox" name="fruits[]" value="レモン"><span>レモン</span></label>
+            <label><input type="checkbox" name="fruits[]" value="オレンジ"><span>オレンジ</span></label>
+            <label><input type="checkbox" name="fruits[]" value="ぶどう"><span>ぶどう</span></label>
+            <label><input type="checkbox" name="fruits[]" value="なし"><span>なし</span></label>
+        </form>
+    </body>
+</html>
